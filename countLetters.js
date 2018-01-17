@@ -16,27 +16,16 @@ var countLetters = function countLettersAndReturnObject(str) {
   var strNoSpaces = str.split(" ").join("");
   var letterCounter = {};
 
-
   for (var i = 0; i < strNoSpaces.length; i++) {
 
-
-    while (!letterCounter.hasOwnProperty(strNoSpaces[i])) {
-
-    var counter = 0;
-    var check = strNoSpaces.indexOf(strNoSpaces[i]);
-
-    while (check !== -1) {
-      counter++;
-      check = strNoSpaces.indexOf(strNoSpaces[i], check + 1)
-    }
-
-    letterCounter[strNoSpaces[i]] = counter;
-
+    if (!letterCounter.hasOwnProperty(strNoSpaces[i])) {
+      letterCounter[strNoSpaces[i]] = 1;
+    } else {
+      letterCounter[strNoSpaces[i]]++;
     }
   }
-
   return letterCounter;
-}
+};
 
 console.log(countLetters("lighthouse in the house"));
 
